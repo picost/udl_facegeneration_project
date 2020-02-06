@@ -28,7 +28,7 @@ class Discriminator(nn.Module):
     
     """
 
-    def __init__(self, conv_dim):
+    def __init__(self, conv_dim, average_last=True):
         """
         Initialize the Discriminator Module
         
@@ -41,6 +41,7 @@ class Discriminator(nn.Module):
                 
         """
         super(Discriminator, self).__init__()
+        self._average_last = average_last
         # --- Convolutional layer (in calling order ) ---
         # 32 * 32 * 3
         self.conv1 = conv(3, conv_dim, kernel_size=4, stride=2, padding=1, 
@@ -52,9 +53,13 @@ class Discriminator(nn.Module):
         self.conv3 = conv(conv_dim * 2, conv_dim * 4, kernel_size=4, stride=2, 
                           padding=1, batch_norm=True)
         # 4 * 4 * conv_dim*4
-        self.conv_classify = conv(conv_dim * 4 , 1,  kernel_size=3, stride=1, 
-                                  padding=1, batch_norm=False)
+        if average_last:
+            self.conv_classify = conv(conv_dim * 4 , 1,  kernel_size=3, 
+                                      stride=1, padding=1, batch_norm=False)
         # 4 * 4 * 1
+        else:
+            self.conv_classify = conv(conv_dim * 4 , 1,  kernel_size=4, 
+                                      stride=1, padding=0, batch_norm=False)
         # 
         # --- Other layers
         self.relu = nn.ReLU()
@@ -69,7 +74,8 @@ class Discriminator(nn.Module):
         x = self.relu(self.conv1(x))
         x = self.relu(self.conv2(x))
         x = self.relu(self.conv3(x))
-        x = self.conv_classify(x)
-        x = x.view(x.shape[0], -1)
-        out = x.mean(dim=1, keepdim=True)
+        out = self.conv_classify(x)
+        if self._average_last:
+            out = out.view(out.shape[0], -1)
+            out = out.mean(dim=1, keepdim=True)
         return out
