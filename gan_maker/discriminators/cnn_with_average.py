@@ -54,6 +54,7 @@ class Discriminator(nn.Module):
         # 4 * 4 * conv_dim*4
         self.conv_classify = conv(conv_dim * 4 , 1,  kernel_size=3, stride=1, 
                                   padding=1, batch_norm=False)
+        # 4 * 4 * 1
         # 
         # --- Other layers
         self.relu = nn.ReLU()
