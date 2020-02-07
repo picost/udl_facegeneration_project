@@ -65,10 +65,20 @@ class Discriminator(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x):
-        """
-        Forward propagation of the neural network
-        :param x: The input to the neural network     
-        :return: Discriminator logits; the output of the neural network
+        """Forward propagation of the neural network
+        
+        Args:
+        -----
+        
+            x (Tensor): mini-batch with shape (batch_size, 3, im_size, im_size)
+       
+        Return:
+        -------
+            
+            Tensor: Discriminator logits with shape (batch_size, 1) if
+                self._average_last is True, else shape (batch_size, 1, 
+                im_size/8, im_size/8)
+            
         """
         # define feedforward behavior
         x = self.relu(self.conv1(x))
