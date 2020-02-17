@@ -34,11 +34,10 @@ def conv_BN(in_channels, out_channels, kernel_size=4, stride=2, padding=1,
             instance representing a convolutional layer, eventually composed
             with a batch normalisation layer
 
-    Note:
-    -----
+    .. note::
 
         If batch normalization is used, then no bias is used in the convolutional layer
-        (redundant/adevrsarial with the shift parameter in the batch normalization)
+        (redundant/adversarial with the shift parameter in the batch normalization)
         Default convolutional kernel, stride and padding values are chosen in order to
         downscale a picture with factor 2 if original size is even.
 
@@ -88,11 +87,10 @@ def conv_transpose_BN(in_channels, out_channels, kernel_size=4, stride=2,
             instance representing a transposed convolutional layer,
             eventually composed with a batch normalisation layer
 
-    Note:
-    -----
+    .. note::
 
         If batch normalization is used, then no bias is used in the convolutional
-        layer (redundant/adevrsarial with the shift parameter in the batch
+        layer (redundant/adversarial with the shift parameter in the batch
         normalization)
         Default convolutional kernel, stride and padding values are chosen in
         order to downscale a picture with factor 2 if original size is even.
