@@ -64,7 +64,7 @@ class Generator(nn.Module):
         self.dconv2 = conv_transpose_BN(
                 conv_dim * 2, conv_dim, kernel_size=4, stride=2, padding=1,
                 batch_norm=True)
-        self.dconv2 = conv_transpose_BN(
+        self.dconv3 = conv_transpose_BN(
                 conv_dim, 3, kernel_size=4, stride=2, padding=1,
                 batch_norm=False)
         self.leak = nn.LeakyReLU(0.2)
