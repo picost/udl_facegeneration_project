@@ -23,6 +23,7 @@ class ResidualBlock(nn.Module):
        networks in some situations (see origina paper).
 
     """
+
     def __init__(self, n_channels, kernel_size=3):
         """Initialize the block according the given number of channels and
         kernel size.
