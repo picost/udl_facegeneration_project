@@ -13,27 +13,34 @@ def conv_BN(in_channels, out_channels, kernel_size=4, stride=2, padding=1,
     Args:
     -----
 
-        in_channels (int): number of channels in conv layer inputs
-        out_channels (int): number of channels in conv layer outputs
-        kernel_size (int/tuple, optional): size of convlution kernel to be used
-        stride (int, optional): convolution stride
-        padding (int, optional): convolution padding
-        batch_norm (bool, optional): If True (default) a batchnormalization layer
+        in_channels (int):
+            number of channels in conv layer inputs
+        out_channels (int):
+            number of channels in conv layer outputs
+        kernel_size (int/tuple, optional):
+            size of convlution kernel to be used
+        stride (int, optional):
+            convolution stride
+        padding (int, optional):
+            convolution padding
+        batch_norm (bool, optional):
+            If True (default) a batchnormalization layer
             is added following the convolution layer.
 
     Returns
     -------
 
-        nn.Module instance representing a convolutional layer, eventually composed
+        nn.Module
+            instance representing a convolutional layer, eventually composed
             with a batch normalisation layer
 
     Note:
     -----
 
         If batch normalization is used, then no bias is used in the convolutional layer
-            (redundant/adevrsarial with the shift parameter in the batch normalization)
+        (redundant/adevrsarial with the shift parameter in the batch normalization)
         Default convolutional kernel, stride and padding values are chosen in order to
-            downscale a picture with factor 2 if original size is even.
+        downscale a picture with factor 2 if original size is even.
 
     """
 
@@ -60,28 +67,35 @@ def conv_transpose_BN(in_channels, out_channels, kernel_size=4, stride=2,
     Args:
     -----
 
-        in_channels (int): number of channels in conv layer inputs
-        out_channels (int): number of channels in conv layer outputs
-        kernel_size (int/tuple, optional): size of convlution kernel to be used
-        stride (int, optional): convolution stride
-        padding (int, optional): convolution padding
-        batch_norm (bool, optional): If True (default) a batchnormalization layer
+        in_channels (int):
+            number of channels in conv layer inputs
+        out_channels (int):
+            number of channels in conv layer outputs
+        kernel_size (int/tuple, optional):
+            size of convlution kernel to be used
+        stride (int, optional):
+            convolution stride
+        padding (int, optional):
+            convolution padding
+        batch_norm (bool, optional):
+            If True (default) a batchnormalization layer
             is added following the convolution layer.
 
     Returns
     -------
 
-        nn.Module instance representing a transposed convolutional layer,
-        eventually composed with a batch normalisation layer
+        nn.Module
+            instance representing a transposed convolutional layer,
+            eventually composed with a batch normalisation layer
 
     Note:
     -----
 
         If batch normalization is used, then no bias is used in the convolutional
-            layer (redundant/adevrsarial with the shift parameter in the batch
-            normalization)
+        layer (redundant/adevrsarial with the shift parameter in the batch
+        normalization)
         Default convolutional kernel, stride and padding values are chosen in
-            order to downscale a picture with factor 2 if original size is even.
+        order to downscale a picture with factor 2 if original size is even.
 
     """
 
